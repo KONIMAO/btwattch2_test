@@ -31,9 +31,9 @@ class WattDataHandler(DataHandler):
                                         dt.hour, dt.minute, dt.second).strftime('%Y-%m-%d %H:%M:%S')
         filename = dt.strftime('%Y%m%d') + '.json'
         os.chdir('/home/pi/Documents/btwattch2_test/log/')
-        f = open(filename, '+ab')
+        f = open(filename, '+a')
         #with open('/home/pi/Documents/btwattch2_test/log/(filename)', 'ab+') as f:
-        f.write(json.dumps(ret).encode() + "\n")
+        f.write(json.dumps(ret) + "\n")
         print(ret)
         f.close()
 
