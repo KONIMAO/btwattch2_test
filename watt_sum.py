@@ -1,8 +1,9 @@
 from datetime import datetime, date, timedelta
 #import time
 import json
-lists =[]
 decoder = json.JSONDecoder()
+
+lists =[]
 
 with open ('/home/pi/Documents/btwattch2_test/log/20201125.json') as file:
     for line in file:
