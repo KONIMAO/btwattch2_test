@@ -10,7 +10,7 @@ day= datetime.strftime(datetime.today(), "%a")
 print(today)
 
 in_file = LOG_DIR + "/" + today + ".json"
-out_file = PER_DAY_DIR + "/" + "watt_per_day.json"
+out_file = PER_DAY_DIR + "/" + "7days_log.json"
 
 data = []
 with open(in_file, "r") as f:
