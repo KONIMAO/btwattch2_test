@@ -46,8 +46,8 @@ with open(lastweek, "r") as fl:
 last_week = data[-1].get("sumW")
 print(last_week)
 
+#先週＜今日までの今週の時、LINEに通知する
 if this_week > last_week:
-
     url = "https://notify-api.line.me/api/notify" 
     token = "rMK2tpGpCcN7j93I4xVurPwXINyjkGZIW4Zr61dPNgX"
     headers = {"Authorization" : "Bearer "+ token}
