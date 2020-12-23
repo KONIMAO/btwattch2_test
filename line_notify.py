@@ -51,6 +51,6 @@ if this_week > last_week:
     url = "https://notify-api.line.me/api/notify" 
     token = "rMK2tpGpCcN7j93I4xVurPwXINyjkGZIW4Zr61dPNgX"
     headers = {"Authorization" : "Bearer "+ token}
-    message =  " 先週より使いすぎ！" 
+    message =  ["先週より使いすぎ！" + "\n" + "今週日曜日から今日までで" +str(this_week) + "Wの使用量！" +"\n" + "先週と比べて" +str(difference)+ "W多く使ってます！"] 
     payload = {"message" :  message} 
     r = requests.post(url, headers = headers, params=payload) 
