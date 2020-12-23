@@ -45,6 +45,7 @@ with open(lastweek, "r") as fl:
         data.append(json.loads(l))
 last_week = data[-1].get("sumW")
 print(last_week)
+difference = this_week - last_week
 
 #先週＜今日までの今週の時、LINEに通知する
 if this_week > last_week:
