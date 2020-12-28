@@ -3,7 +3,7 @@
 import requests
 from datetime import datetime
 import json
-
+import math
 
 #今日の合計
 BASE_DIR = "/home/pi/Documents/btwattch2_test"
@@ -46,12 +46,14 @@ with open(lastweek, "r") as fl:
 last_week = data[-1].get("sumW")
 print(last_week)
 difference = this_week - last_week
+n=2
+difference_cut = math.floor(difference*10**n) / (10**n)
 
 #先週＜今日までの今週の時、LINEに通知する
 if this_week > last_week:
     url = "https://notify-api.line.me/api/notify" 
     token = "rMK2tpGpCcN7j93I4xVurPwXINyjkGZIW4Zr61dPNgX"
     headers = {"Authorization" : "Bearer "+ token}
-    message =  ["先週より使いすぎ！" + "\n" + "今週日曜日から今日までで" +str(this_week) + "Wの使用量！" +"\n" + "先週と比べて" +str(difference)+ "W多く使ってます！"] 
+    message =  ["先週より使いすぎ！" + "\n" + "今週日曜日から今日までの合計使用量は" +str(this_week) + "Wです！" +"\n" + "先週と比べて" +str(difference)+ "W多く使ってます！"] 
     payload = {"message" :  message} 
     r = requests.post(url, headers = headers, params=payload) 
