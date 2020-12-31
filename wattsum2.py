@@ -11,6 +11,8 @@ print(today)
 
 in_file = LOG_DIR + "/" + today + ".json"
 out_file = PER_DAY_DIR + "/" + "7days_log.json"
+out_file_line = PER_DAY_DIR + "/" + "7days_log_line.json"
+out_file_max = PER_DAY_DIR + "/" + "7days_log_max.json"
 
 data = []
 with open(in_file, "r") as f:
@@ -25,6 +27,15 @@ wat_max = max(wats)
 wat_max_dt = data[wats.index(wat_max)]["datetime"]
 
 print(wat_total)
+#3つのファイルを作る
+
 with open(out_file, '+a') as f:
     f.write('{"Date-maxtime":' +  json.dumps(wat_max_dt) + '(' + str(day) + '), "maxW":' + json.dumps(wat_max) +  ', "sumW":' + json.dumps(wat_total) +  ', "aveW":' + json.dumps(wat_average)+ '}' + "\n")
+
+with open(out_file_line, '+a') as f:
+    f.write('{"Date-maxtime":' +  json.dumps(wat_max_dt) + '(' + str(day) + '), "maxW":' + json.dumps(wat_max) +  ', "sumW":' + json.dumps(wat_total) +  ', "aveW":' + json.dumps(wat_average)+ '}' + "\n")
+
+with open(out_file_max, '+a') as f:
+    f.write('{"Date-maxtime":' +  json.dumps(wat_max_dt) + '(' + str(day) + '), "maxW":' + json.dumps(wat_max) +  ', "sumW":' + json.dumps(wat_total) +  ', "aveW":' + json.dumps(wat_average)+ '}' + "\n")
+
 
