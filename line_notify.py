@@ -14,7 +14,7 @@ today = datetime.strftime(datetime.today(), "%Y%m%d")
 day= datetime.strftime(datetime.today(), "%a")
 
 today_file = LOG_DIR + "/" + today + ".json"
-thisweek = PER_DAY_DIR + "/" + "7days_log.json"
+thisweek = PER_DAY_DIR + "/" + "7days_log_line.json"
 lastweek = PER_DAY_DIR + "/" + "weekly_sum.json"
 data = []
 with open(today_file, "r") as f:
@@ -57,3 +57,5 @@ if this_week > last_week:
     message =  ["先週より使いすぎ！" + "\n" + "今週日曜日から今日までの合計使用量は" +str(this_week) + "Wです！" +"\n" + "先週と比べて" +str(difference)+ "W多く使ってます！"] 
     payload = {"message" :  message} 
     r = requests.post(url, headers = headers, params=payload) 
+    with open(thisweek, '+a') as f:
+        f.write('Notify Done' )
