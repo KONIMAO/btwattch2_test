@@ -10,7 +10,7 @@ LOG_DIR = BASE_DIR + "/log"
 PER_DAY_DIR = BASE_DIR + "/per_day"
 
 lastweek = PER_DAY_DIR + "/" + "weekly_sum.json"
-yesterday = PER_DAY_DIR + "/" + "7days_log.json"
+yesterday = PER_DAY_DIR + "/" + "7days_log_max.json"
 
 #先週中の最大使用日
 
@@ -55,3 +55,5 @@ if last_week  > sum_yesterday:
     message = [ "昨日の電気使用量が先週の最大使用量を"+ str(difference_cut)+ "W上回りました！" + "\n" + str(difference_cut)+"Wは" +str(co2_cut) +"kgのCO2排出量であり、これはスギの木"+ str(sugi_cut) + "本分が吸収するCO2量にあたります。"]
     payload = {"message" :  message} 
     r = requests.post(url, headers = headers, params=payload) 
+    with open(yesterday, '+a') as f:
+        f.write('Notify Done' )
