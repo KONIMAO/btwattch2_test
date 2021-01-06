@@ -3,6 +3,8 @@ import os
 from datetime import datetime, timedelta
 
 in_file = "/home/pi/Documents/btwattch2_test/per_day/7days_log.json"
+in_file_line = "/home/pi/Documents/btwattch2_test/per_day/7days_log_line.json"
+in_file_max = "/home/pi/Documents/btwattch2_test/per_day/7days_log_max.json"
 out_file = "/home/pi/Documents/btwattch2_test/per_day/watt_per_day.json"
 week_file= "/home/pi/Documents/btwattch2_test/per_day/weekly_sum.json"
 
@@ -33,3 +35,5 @@ with open(week_file, '+a') as f:
 
 #一週間のログファイルを削除
 os.remove(in_file)
+os.remove(in_file_line)
+os.remove(in_file_max)
