@@ -41,9 +41,9 @@ difference_cut = math.floor(difference*10**n) / (10**n)
 print(difference_cut)
 
 #co2排出量とスギ
-co2= difference*0.523
+co2= difference*0.000444
 co2_cut = math.floor(co2*10**n) / (10**n)
-sugi = co2 / 54.6
+sugi = co2 / 8.17
 sugi_cut =math.floor(sugi*10**n) / (10**n)
 
 #Line
@@ -52,7 +52,7 @@ if last_week  > sum_yesterday:
     url = "https://notify-api.line.me/api/notify" 
     token = "rMK2tpGpCcN7j93I4xVurPwXINyjkGZIW4Zr61dPNgX"
     headers = {"Authorization" : "Bearer "+ token}
-    message = [ "昨日の電気使用量が先週の最大使用量を"+ str(difference_cut)+ "W上回りました！" + "\n" + str(difference_cut)+"Wは" +str(co2_cut) +"kgのCO2排出量であり、これはスギの木"+ str(sugi_cut) + "本分が吸収するCO2量にあたります。"]
+    message = [ "昨日の電気使用量が先週の最大使用量を"+ str(difference_cut)+ "W上回りました！" + "\n" + str(difference_cut)+"Wは" +str(co2_cut) +"kgのCO2排出量であり、これはスギの木"+ str(sugi_cut) + "本分が1ヶ月に吸収するCO2量にあたります。"]
     payload = {"message" :  message} 
     r = requests.post(url, headers = headers, params=payload) 
     with open(yesterday, '+a') as f:
